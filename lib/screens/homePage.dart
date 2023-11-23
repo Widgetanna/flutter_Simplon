@@ -11,11 +11,18 @@ class MyHome extends StatefulWidget {
 
 class _MyHomeState extends State<MyHome> {
   final String title = 'Flutter Demo Home Page';
-  int _counter = 0;
+  int _counter = 0; 
+  
 
   void _incrementCounter() {
     setState(() {
       _counter++;
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      _counter--;
     });
   }
 
@@ -88,11 +95,21 @@ class _MyHomeState extends State<MyHome> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
+      FloatingActionButton(
+        onPressed: _decrementCounter,
+        tooltip: 'Decrement',
+        child: const Icon(Icons.remove),
+      ),
+    ],
+  ),
       persistentFooterButtons: [
         TextButton(
           onPressed: () {
@@ -103,7 +120,7 @@ class _MyHomeState extends State<MyHome> {
           },
           child: const Row(
             children: [
-              Text('Aller à la TestHomePage'),
+              Text('Aller à la Test Home Page'),
               Icon(Icons.arrow_forward_ios),
             ],
           ),
