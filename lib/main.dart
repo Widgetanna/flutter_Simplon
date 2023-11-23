@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_simplon/screens/test_home_page.dart';
+import 'package:flutter_simplon/screens/homePage.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const TestHomePage(),
+      home: const MyHome(),
     );
   }
 }
