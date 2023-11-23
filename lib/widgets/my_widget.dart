@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_simplon/models/my_widget_model.dart';
+import 'package:flutter_simplon/widgets/rating_box.dart';
 
 class MyWidget extends StatelessWidget {
-  final String name;
-  final String description;
-  final int price;
-  final String image;
+   final MyWidgetModel myWidgetModel; 
 
-  const MyWidget(
-      {required this.name,
-      required this.description,
-      required this.price,
-      required this.image,
-      super.key});
+  const MyWidget({
+    Key? key,
+    required this.myWidgetModel,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,23 +17,18 @@ class MyWidget extends StatelessWidget {
       height: 150,
       child: Card(
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset(
-                image,
-                width: 100, // Adjust the width as needed
-                height: 100, // Adjust the height as needed
-                fit: BoxFit.cover,
-              ),
+            Image.asset(
+              myWidgetModel.image,
+              fit: BoxFit.cover,
             ),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Text(
-                    name,
+                    myWidgetModel.name,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
@@ -44,12 +36,13 @@ class MyWidget extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: Text(
-                      description,
+                      myWidgetModel.description,
                     ),
                   ),
                   Text(
-                    "Prix: ${price.toString()} €",
+                    "Prix: ${myWidgetModel.price.toString()} €",
                   ),
+                  const RatingBox(),
                 ],
               ),
             ),

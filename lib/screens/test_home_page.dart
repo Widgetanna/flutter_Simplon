@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_simplon/models/my_widget_model.dart';
 import 'package:flutter_simplon/widgets/my_widget.dart';
 
 class TestHomePage extends StatefulWidget {
@@ -29,15 +30,20 @@ class _TestHomePageState extends State<TestHomePage> {
       ),
       body: SafeArea(
         child: ListView(
+          shrinkWrap: true,
+          padding: const EdgeInsets.fromLTRB(2.0, 10.0, 2.0, 10.0),
           children: List.generate(names.length, (index) {
+            
+            MyWidgetModel myModel = MyWidgetModel(
+              name: names[index],
+              description: descriptions[index],
+              price: prices[index],
+              image: 'assets/img/${images[index]}',
+            );
+
             return Padding(
               padding: const EdgeInsets.all(8.0),
-              child: MyWidget(
-                name: names[index],
-                description: descriptions[index],
-                price: prices[index],
-                image: 'assets/img/${images[index]}',
-              ),
+              child: MyWidget(myWidgetModel: myModel),
             );
           }),
         ),
